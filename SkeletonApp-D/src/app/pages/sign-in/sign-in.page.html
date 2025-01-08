@@ -1,0 +1,38 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar class="ion-text-center">
+    <ion-title>
+      <h1>SkeletonAPP</h1>
+      Aquí comienza todo
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<ion-list>
+  <ion-item lines="none"> </ion-item>
+  <ion-item lines="none" class="ion-text-center">
+    <ion-label>Bienvenido!</ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-input label="Usuario" labelPlacement="stacked">
+    <ion-icon name="person" slot="end" aria-hidden="true"></ion-icon>
+    </ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-input label="Contraseña" labelPlacement="stacked" type="password">
+      <ion-icon name="lock-closed" slot="end" aria-hidden="true"></ion-icon>
+    </ion-input>
+  </ion-item>
+  <ion-item lines="none">
+  </ion-item>
+</ion-list>
+<ion-button routerLink="/home" expand="block">
+  Ingresar
+  <ion-icon name="log-in-outline"></ion-icon>
+</ion-button>
+<ion-list>
+  <ion-item lines="none" class="ion-text-center">
+    <ion-label routerLink="/password-recovery">Recuperar contraseña</ion-label>
+  </ion-item>
+</ion-list>
+</ion-content>
