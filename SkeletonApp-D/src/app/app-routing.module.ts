@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'password-recovery',
     loadChildren: () => import('./pages/password-recovery/password-recovery.module').then( m => m.PasswordRecoveryPageModule)
+  },  {
+    path: 'example',
+    loadChildren: () => import('./pages/example/example.module').then( m => m.ExamplePageModule)
   },
+
 ];
 
 @NgModule({
