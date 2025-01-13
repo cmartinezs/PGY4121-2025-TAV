@@ -9,6 +9,8 @@ import { AnimationController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit, AfterViewInit {
 
+  headerTitle: string = 'SkeletonAPP desde NG'
+
   constructor(
     private animationCtrl: AnimationController
   ) { }
