@@ -1,8 +1,8 @@
 <ion-header [translucent]="true" class="ion-no-border">
   <ion-toolbar class="ion-text-center">
     <ion-title id="animationTitle">
-      <h1>{{ headerTitle }}</h1>
-      Aqui comienza todo
+      <h1>{{headerTitle}}</h1>
+      {{subtitle}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,12 +10,13 @@
 <ion-content [fullscreen]="true">
   <ion-card>
     <ion-card-header class="ion-text-center welcome">
-      Bienvenidos!
+      {{welcomeMessage}}
     </ion-card-header>
     <ion-card-content>
-      <ion-input label="Usuario" labelPlacement="floating"></ion-input>
+      <ion-input [(ngModel)]="username"
+      label="Usuario" labelPlacement="floating"></ion-input>
       <ion-input label="Contraseña" labelPlacement="floating" type="password"></ion-input>
-      <ion-button expand="full" routerLink="/home">Ingresar</ion-button>
+      <ion-button expand="full" (click)="login()">Ingresar</ion-button>
     </ion-card-content>
   </ion-card>
 </ion-content>

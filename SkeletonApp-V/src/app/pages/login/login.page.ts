@@ -9,7 +9,12 @@ import { AnimationController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit, AfterViewInit {
 
-  headerTitle: string = 'SkeletonAPP desde NG'
+  headerTitle: string = 'SkeletonAPP desde NG';
+  subtitle: string = 'Aqui comienza todo';
+  welcomeMessage = 'Bienvenidos!';
+
+  username!: string;
+  password!: string;
 
   constructor(
     private animationCtrl: AnimationController
@@ -27,10 +32,13 @@ export class LoginPage implements OnInit, AfterViewInit {
       .duration(3000)
       .fromTo('opacity', '1', '0.5')
       .fromTo('transform', 'translateX(0px)', 'translateX(100px)')
-      .play()
+      //.play()
   }
 
   ngOnInit() {
   }
 
+  login(){
+    console.log(`El usuario es ${this.username}`)
+  }
 }
