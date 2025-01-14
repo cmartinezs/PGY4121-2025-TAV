@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, AnimationController, ToastController } from '@ionic/angular';
 import { User } from 'src/app/model/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -20,22 +21,12 @@ export class LoginPage implements OnInit, AfterViewInit {
 
   loginErrorMessage!: string;
 
-  users: User[] = [{
-    username: 'cmartinezs',
-    password: '12345'
-  }, {
-    username: 'jose',
-    password: '12345'
-  }, {
-    username: 'juan',
-    password: '12345'
-  }]
-
   constructor(
     private animationCtrl: AnimationController,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
     private router: Router,
+    private userService: UserService,
   ) { }
 
   ngAfterViewInit(): void {
@@ -60,8 +51,10 @@ export class LoginPage implements OnInit, AfterViewInit {
     console.log(`El usuario es ${this.username}`)
     console.log(`La contraseña es ${this.password}`)
 
-    const user = this.users.find(user => user.username === this.username)
+    const user = this.userService.getUser(this.username)
+
     let pwdValid = false
+
     if(user !== undefined){
       pwdValid = user.password === this.password
     }
