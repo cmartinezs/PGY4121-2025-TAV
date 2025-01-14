@@ -15,6 +15,7 @@ export class HomePage implements ViewWillEnter {
   lastname!: string;
   edLvl!: string;
   birthday!: string;
+  birthdayISO!: string;
 
   constructor() {}
 
@@ -37,5 +38,13 @@ export class HomePage implements ViewWillEnter {
     }
 
     localStorage.setItem(`data_${this.loggedUser}`, JSON.stringify(data))
+  }
+
+  formatDate() {
+    const date = new Date(this.birthdayISO)
+    const day = date.getDate().toString().padStart(2, '0')
+    const month = (date.getMonth() + 1).toString().padStart(2, '0')
+    const year = date.getFullYear()
+    this.birthday = `${day}-${month}-${year}`
   }
 }

@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">register</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-input label="Username" [(ngModel)]="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Password" [(ngModel)]="password" type="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-button (click)="register()">Registrar</ion-button>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+</ion-content>

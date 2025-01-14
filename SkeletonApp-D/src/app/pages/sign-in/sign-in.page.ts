@@ -29,7 +29,19 @@ export class SignInPage implements OnInit, AfterViewInit {
     private alertCtrl: AlertController,
     private toastCtrl: ToastController,
     private router: Router,
-  ) { }
+  ) { 
+
+    const usersJson = localStorage.getItem('users') ?? '[]'
+    const usersData = JSON.parse(usersJson)
+
+    console.log('users from localhost', usersJson)
+    console.log('list users', usersData)
+
+    if (usersData && usersData.length > 0) {
+      this.users = usersData
+    }
+
+  }
 
   ngAfterViewInit(): void {
     const el = document.querySelector('#principalTitle')

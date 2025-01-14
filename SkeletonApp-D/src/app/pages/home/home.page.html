@@ -37,14 +37,15 @@
       </ion-select>
     </ion-item>
     <ion-item lines="none">
-      <ion-input [(ngModel)]="birthday"
+      <ion-input [(ngModel)]="birthday" readonly="true"
       label="Fec. Nac." mode="md" fill="outline"></ion-input>
       <ion-button id="click-trigger">
         <ion-icon name="calendar"></ion-icon>
       </ion-button>
       <ion-popover trigger="click-trigger" triggerAction="click">
         <ng-template>
-          <ion-datetime></ion-datetime>
+          <ion-datetime [(ngModel)]="birthdayISO" presentation="date"
+          [showDefaultButtons]="true" (ionChange)="formatDate()" ></ion-datetime>
         </ng-template>
       </ion-popover>
     </ion-item>
