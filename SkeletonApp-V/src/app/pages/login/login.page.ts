@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { AnimationController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AlertController, AnimationController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +17,13 @@ export class LoginPage implements OnInit, AfterViewInit {
   username!: string;
   password!: string;
 
+  loginErrorMessage!: string;
+
   constructor(
-    private animationCtrl: AnimationController
+    private animationCtrl: AnimationController,
+    private alertCtrl: AlertController,
+    private toastCtrl: ToastController,
+    private router: Router,
   ) { }
 
   ngAfterViewInit(): void {
@@ -38,7 +44,30 @@ export class LoginPage implements OnInit, AfterViewInit {
   ngOnInit() {
   }
 
-  login(){
+  async login(){
     console.log(`El usuario es ${this.username}`)
+    console.log(`La contraseña es ${this.password}`)
+
+    if( this.username === 'cmartinezs' && this.password === '12345') {
+      console.log('Login exitoso')
+      this.router.navigateByUrl('/home')
+    } else {
+      console.log('Login fallido')
+      this.loginErrorMessage = 'Login fallido'
+      const alert = await this.alertCtrl.create({
+        header: 'Error de login',
+        message: 'Login fallido',
+        buttons: ['ok']
+      })
+      alert.present()
+
+      const toastPromise = this.toastCtrl.create({
+        header: 'Error de login',
+        message: 'Login fallido',
+        duration: 2000,
+      })
+
+      toastPromise.then(toast => toast.present())
+    }
   }
 }

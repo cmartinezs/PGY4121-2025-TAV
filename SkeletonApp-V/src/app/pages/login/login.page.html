@@ -15,8 +15,10 @@
     <ion-card-content>
       <ion-input [(ngModel)]="username"
       label="Usuario" labelPlacement="floating"></ion-input>
-      <ion-input label="Contraseña" labelPlacement="floating" type="password"></ion-input>
+      <ion-input [(ngModel)]="password" 
+      label="Contraseña" labelPlacement="floating" type="password"></ion-input>
       <ion-button expand="full" (click)="login()">Ingresar</ion-button>
+      {{loginErrorMessage}}
     </ion-card-content>
   </ion-card>
 </ion-content>
