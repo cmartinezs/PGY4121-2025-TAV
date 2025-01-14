@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, AnimationController, ToastController } from '@ionic/angular';
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-sign-in',
@@ -14,6 +15,15 @@ export class SignInPage implements OnInit, AfterViewInit {
   username!: string;
   password!: string;
   signInInvalidMessage!: string;
+  
+  users: User[] = [{
+    username: 'cmartinezs',
+    password: '12345'
+  }, {
+    username: 'pepito',
+    password: '12345'
+  }]
+  
   constructor(
     private animationCtrl: AnimationController,
     private alertCtrl: AlertController,
@@ -44,12 +54,18 @@ export class SignInPage implements OnInit, AfterViewInit {
   singIn(){
     console.log(`El nombre de usuario es ${this.username}`)
     console.log(`El contraseña de usuario es ${this.password}`)
-    //el usuario esta registrado
-    // contraseña coincide
+    
+    const foundUser = this.users.find(u => u.username === this.username)
+    let pwdValid = false;
+    
+    if(foundUser){
+      pwdValid = foundUser.password === this.password
+    }
 
-    const singInSuccess = false;
+    const singInSuccess = foundUser !== undefined && pwdValid;
 
     if(singInSuccess){
+      localStorage.setItem('loggedUser', this.username)
       this.router.navigateByUrl("/home");
     } else {
       console.log('Sign In inválido');
@@ -61,7 +77,7 @@ export class SignInPage implements OnInit, AfterViewInit {
       }).then(a => a.present());
 
       this.toastCtrl.create({
-        duration: 1000,
+        duration: 2000,
         header: 'Sing In Inválido',
         message: 'Usuario y/o contraseña inválidos',
         color: 'danger'
