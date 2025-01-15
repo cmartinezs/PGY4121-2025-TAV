@@ -30,6 +30,10 @@ const routes: Routes = [
     path: 'qr',
     loadChildren: () => import('./pages/qr/qr.module').then( m => m.QrPageModule)
   },
+  {
+    path: 'geolocation',
+    loadChildren: () => import('./pages/geolocation/geolocation.module').then( m => m.GeolocationPageModule)
+  },
 
 
 ];

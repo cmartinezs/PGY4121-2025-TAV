@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Geolocation | {{status}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Geolocation</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button (click)="getCurrentPosition()">Get Current Position</ion-button>
+      <ion-list>
+        <ion-item>
+          <ion-label>Latitude</ion-label>
+          <ion-input type="text" [(ngModel)]="latitude"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Longitude</ion-label>
+          <ion-input type="text" [(ngModel)]="longitude"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Accuracy</ion-label>
+          <ion-input type="text" [(ngModel)]="accuracy"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Altitude</ion-label>
+          <ion-input type="text" [(ngModel)]="altitude"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Altitude Accuracy</ion-label>
+          <ion-input type="text" [(ngModel)]="altitudeAccuracy"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Heading</ion-label>
+          <ion-input type="text" [(ngModel)]="heading"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Speed</ion-label>
+          <ion-input type="text" [(ngModel)]="speed"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Timestamp</ion-label>
+          <ion-input type="text" [(ngModel)]="timestamp"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
