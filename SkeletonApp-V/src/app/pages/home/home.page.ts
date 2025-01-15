@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ViewWillEnter } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -6,8 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
   standalone: false,
 })
-export class HomePage {
+export class HomePage implements ViewWillEnter{
 
+  loggedUser!: string
+  
   constructor() {}
+
+  ionViewWillEnter(): void {
+    this.loggedUser = localStorage.getItem('logged_user') ?? 'Invitado'
+  }
+
+
 
 }

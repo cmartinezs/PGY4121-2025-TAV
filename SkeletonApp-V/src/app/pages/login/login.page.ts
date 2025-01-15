@@ -63,6 +63,7 @@ export class LoginPage implements OnInit, AfterViewInit {
 
     if(loginSuccess) {
       console.log('Login exitoso')
+      localStorage.setItem('logged_user', this.username)
       this.router.navigateByUrl('/home')
     } else {
       console.log('Login fallido')
