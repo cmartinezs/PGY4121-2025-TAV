@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, AnimationController, ToastController } from '@ionic/angular';
 import { User } from 'src/app/model/user';
+import { SessionService } from 'src/app/services/session.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -27,6 +28,7 @@ export class LoginPage implements OnInit, AfterViewInit {
     private toastCtrl: ToastController,
     private router: Router,
     private userService: UserService,
+    private sessionService: SessionService
   ) { }
 
   ngAfterViewInit(): void {
@@ -63,7 +65,7 @@ export class LoginPage implements OnInit, AfterViewInit {
 
     if(loginSuccess) {
       console.log('Login exitoso')
-      localStorage.setItem('logged_user', this.username)
+      this.sessionService.setUserSession(this.username)
       this.router.navigateByUrl('/home')
     } else {
       console.log('Login fallido')

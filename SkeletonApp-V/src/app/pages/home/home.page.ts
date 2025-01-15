@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ViewWillEnter } from '@ionic/angular';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +12,24 @@ import { ViewWillEnter } from '@ionic/angular';
 export class HomePage implements ViewWillEnter{
 
   loggedUser!: string
+  showAditonalInfo: boolean = false
   
-  constructor() {}
+  constructor(
+    private router: Router,
+    private sessionService: SessionService
+  ) {}
 
   ionViewWillEnter(): void {
-    this.loggedUser = localStorage.getItem('logged_user') ?? 'Invitado'
+    this.loggedUser = this.sessionService.getUserSession();
+    this.showAditonalInfo = this.loggedUser !== 'Invitado'
   }
 
+  logout(){
+    this.sessionService.removeUserSession();
+    this.router.navigateByUrl('/login')
+  }
 
-
+  showInfo(){
+    this.showAditonalInfo = !this.showAditonalInfo
+  }
 }

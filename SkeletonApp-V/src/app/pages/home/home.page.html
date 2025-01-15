@@ -3,7 +3,7 @@
     <ion-title>
       SkeletonAPP
     </ion-title>
-    <ion-button routerLink="/login" slot="end" fill="clear">
+    <ion-button (click)="logout()" slot="end" fill="clear">
       <ion-icon name="log-out-outline" color="light"></ion-icon>
     </ion-button>
   </ion-toolbar>
@@ -17,6 +17,11 @@
     <ion-item lines="none">
       <ion-label>Usuario: {{loggedUser}}</ion-label>
     </ion-item>
+    <ion-item lines="none">
+      <ion-button (click)="showInfo()">Mostrar info</ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="showAditonalInfo">
     <ion-item lines="none" class="ion-text-center">
       <ion-label><h2>Información Adicional</h2></ion-label>
     </ion-item>
