@@ -13,6 +13,7 @@ export class HomePage implements ViewWillEnter{
 
   loggedUser!: string
   showAditonalInfo: boolean = false
+  msgBtnInfo!: string;
   
   constructor(
     private router: Router,
@@ -22,6 +23,7 @@ export class HomePage implements ViewWillEnter{
   ionViewWillEnter(): void {
     this.loggedUser = this.sessionService.getUserSession();
     this.showAditonalInfo = this.loggedUser !== 'Invitado'
+    this.msgBtnInfo = this.showAditonalInfo ? 'Ocultar info' : 'Mostrar info'
   }
 
   logout(){
@@ -31,5 +33,6 @@ export class HomePage implements ViewWillEnter{
 
   showInfo(){
     this.showAditonalInfo = !this.showAditonalInfo
+    this.msgBtnInfo = this.showAditonalInfo ? 'Ocultar info' : 'Mostrar info'
   }
 }
