@@ -34,6 +34,10 @@ const routes: Routes = [
     path: 'geolocation',
     loadChildren: () => import('./pages/geolocation/geolocation.module').then( m => m.GeolocationPageModule)
   },
+  {
+    path: 'rick-and-morty',
+    loadChildren: () => import('./pages/rick-and-morty/rick-and-morty.module').then( m => m.RickAndMortyPageModule)
+  },
 
 
 ];

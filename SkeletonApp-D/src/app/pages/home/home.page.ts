@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ViewWillEnter } from '@ionic/angular';
 
 @Component({
@@ -17,7 +18,9 @@ export class HomePage implements ViewWillEnter {
   birthday!: string;
   birthdayISO!: string;
 
-  constructor() {}
+  constructor(
+    private router: Router
+  ) {}
 
   ionViewWillEnter() {
     this.loggedUser = localStorage.getItem('loggedUser') ?? 'guest'
@@ -46,5 +49,17 @@ export class HomePage implements ViewWillEnter {
     const month = (date.getMonth() + 1).toString().padStart(2, '0')
     const year = date.getFullYear()
     this.birthday = `${day}-${month}-${year}`
+  }
+
+  logout(){
+    localStorage.removeItem('loggedUser')
+    this.router.navigateByUrl('/sign-in')
+  }
+
+  clean() {
+    this.firstname = ''
+    this.lastname = ''
+    this.edLvl = ''
+    this.birthday = ''
   }
 }

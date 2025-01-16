@@ -3,7 +3,7 @@
     <ion-title>
       SkeletonAPP
     </ion-title>
-    <ion-button routerLink="/sign-in" slot="end">
+    <ion-button (click)="logout()" slot="end" fill="clear" color="light">
       <ion-icon name="log-out-outline" ></ion-icon>
     </ion-button>
   </ion-toolbar>
@@ -17,6 +17,8 @@
     <ion-item lines="none">
       <ion-label>Usuario: {{loggedUser}}</ion-label>
     </ion-item>
+  </ion-list>
+  <ion-list *ngIf="loggedUser !== 'guest'">
     <ion-item lines="none" class="ion-text-center">
       <ion-label><h2>Información Adicional</h2></ion-label>
     </ion-item>
@@ -50,7 +52,7 @@
       </ion-popover>
     </ion-item>
     <ion-item lines="none">
-      <ion-button>Limpiar
+      <ion-button (click)="clean()">Limpiar
         <ion-icon name="trash-outline" slot="end"></ion-icon>
       </ion-button>
       <ion-button (click)="save()">Guardar
@@ -61,8 +63,8 @@
       </ion-button>
       <ion-alert trigger="present-alert"
       header="Usuario"
-      message="Su nombre es nombre apellido"
-    ></ion-alert>
+      message="Su nombre es {{firstname}} {{lastname}}"
+      ></ion-alert>
     </ion-item>
   </ion-list>
 </ion-content>

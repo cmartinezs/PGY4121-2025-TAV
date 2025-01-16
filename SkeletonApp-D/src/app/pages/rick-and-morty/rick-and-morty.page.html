@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Rick And Morty Characters</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<ion-list>
+  <ion-item>
+    <ion-button (click)="previusPage()" slot="start">
+      Prev
+      <ion-icon name="chevron-back-outline" slot="start"></ion-icon>
+    </ion-button>
+    <ion-button (click)="nextPage()" slot="end">
+      Next
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-button>
+  </ion-item>
+  <ion-item *ngFor="let item of characters" 
+    routerLink="/rick-and-morty/detail/{{item.id}}">
+    <ion-avatar slot="start">
+      <img alt="{{item.name}}" src="{{item.image}}" />
+    </ion-avatar>
+    <ion-label>{{item.name}}</ion-label>
+    <ion-chip>{{item.gender}}</ion-chip>
+  </ion-item>
+</ion-list>
+</ion-content>

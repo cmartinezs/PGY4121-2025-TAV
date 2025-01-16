@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Detalle Personaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-button routerLink="/rick-and-morty">Volver
+        <ion-icon name="chevron-back-outline" slot="start"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+<ion-card *ngIf="character">
+  <ion-card-header>
+    <ion-card-title>{{character.name}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item>
+      <ion-label>Genero</ion-label>
+      <ion-label>{{character.gender}}</ion-label>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
+</ion-content>

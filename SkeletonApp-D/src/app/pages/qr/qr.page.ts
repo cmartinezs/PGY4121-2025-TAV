@@ -10,6 +10,7 @@ import { CapacitorBarcodeScanner, CapacitorBarcodeScannerTypeHint } from '@capac
 export class QrPage implements OnInit {
 
   result: string = ''
+  results: string[] = []
 
   constructor() { }
 
@@ -21,5 +22,10 @@ export class QrPage implements OnInit {
       hint: CapacitorBarcodeScannerTypeHint.ALL
     });
     this.result = result.ScanResult;
+    this.results.push(this.result);
+  }
+
+  remove(item: string) {
+    this.results = this.results.filter(result => result !== item);
   }
 }

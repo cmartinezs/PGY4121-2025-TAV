@@ -7,7 +7,15 @@
 <ion-content>
   <ion-list>
     <ion-item *ngIf="result">
-      {{result}}
+      último escaneo: {{result}}
+    </ion-item>
+  </ion-list>
+  <ion-list *ngIf="results.length > 0">
+    <ion-item>
+      Lista de elementos escaneados:
+    </ion-item>
+    <ion-item *ngFor="let item of results">
+      {{item}} <ion-button (click)="remove(item)">Eliminar</ion-button>
     </ion-item>
   </ion-list>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
