@@ -12,6 +12,10 @@ Considerar:
 4. Las páginas deben considerar como mínimo todos los componentes vistos en clases: header, content, footer, card, list/item, label, input, select, button, datetime, icon, toolbar, popover, alert.
 5. Se debe aplicar navegación entre páginas
 6. Se debe aplicar al menos una animación, acorde a la aplicación y sutil
-## Ev2 20 Enero
-## Ev3 27 Enero
+## Ev2 22 Enero
+1. Implementar funcionalidad total de la aplicación para que cumpla con los requerimientos establecidos.
+2. Implementar al menos una API Nativa (Geolocation, Network, Device, etc)
+3. Implementar al menos un consumo de API Rest
+4. Implementar almacenamiento (localSorage)
+## Ev3 29 Enero
 ## EX 3 Febrero
