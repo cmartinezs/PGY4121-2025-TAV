@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,10 @@ export class UserService {
 
   users: User[] = []
   
-  constructor() { 
-    const dataJson = localStorage.getItem('users') ?? '[]'
-    this.users = JSON.parse(dataJson)
+  constructor(
+      private localStorageService: LocalStorageService
+    ) { 
+    this.users = this.localStorageService.get('users') ?? []
   }
 
   getUsers(): User[] {
@@ -26,6 +28,6 @@ export class UserService {
       username: u,
       password: p
     })
-    localStorage.setItem('users', JSON.stringify(this.users))
+    this.localStorageService.save('users', this.users)
   }
 }

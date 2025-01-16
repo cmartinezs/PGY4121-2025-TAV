@@ -1,21 +1,26 @@
 import { Injectable } from '@angular/core';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionService {
 
-  constructor() { }
+  userKey: string = 'logged_user'
+
+  constructor(
+    private localStorageService: LocalStorageService
+  ) { }
 
   setUserSession(username: string){
-    localStorage.setItem('logged_user', username)
+    this.localStorageService.save(this.userKey, username)
   }
 
   getUserSession(): string {
-    return localStorage.getItem('logged_user') ?? 'Invitado'
+    return this.localStorageService.get(this.userKey) ?? 'Invitado'
   }
 
   removeUserSession(){
-    localStorage.removeItem('logged_user')
+    this.localStorageService.remove(this.userKey)
   }
 }
