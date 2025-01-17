@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewWillEnter } from '@ionic/angular';
+import { AlertController, ViewWillEnter } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +19,8 @@ export class HomePage implements ViewWillEnter {
   birthdayISO!: string;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private alertCtrl: AlertController
   ) {}
 
   ionViewWillEnter() {
@@ -50,6 +51,26 @@ export class HomePage implements ViewWillEnter {
     const year = date.getFullYear()
     this.birthday = `${day}-${month}-${year}`
   }
+
+  confirmLogout(){
+    this.alertCtrl.create({
+      header: 'Logout',
+      message: 'Está seguro de salir de la aplicación?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel'
+        },
+        {
+          text: 'Si',
+          handler: () => this.logout()
+        }
+      ]
+    }).then(alert => {
+      alert.present()
+    })
+  }
+
 
   logout(){
     localStorage.removeItem('loggedUser')
