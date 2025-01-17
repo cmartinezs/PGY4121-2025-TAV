@@ -44,6 +44,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/rick-and-morty/rick-and-morty.module').then( m => m.RickAndMortyPageModule),
     canActivate: [authGuard]
   },
+  {
+    path: '**',
+    loadChildren: () => import('./pages/not-found/not-found.module').then( m => m.NotFoundPageModule)
+  },
 
 
 ];
