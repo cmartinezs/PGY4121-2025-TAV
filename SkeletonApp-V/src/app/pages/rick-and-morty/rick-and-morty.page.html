@@ -15,7 +15,7 @@
         NEXT
         <ion-icon name="arrow-forward" slot="end"></ion-icon></ion-button>
     </ion-item>
-    <ion-item *ngFor="let character of characters">
+    <ion-item *ngFor="let character of characters" routerLink="/rick-and-morty/detail/{{character.id}}">
       <ion-avatar slot="start">
         <img [src]="character.image" />
       </ion-avatar>

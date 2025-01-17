@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: RickAndMortyPage
+  },
+  {
+    path: 'detail/:id',
+    loadChildren: () => import('./detail/detail.module').then( m => m.DetailPageModule)
   }
 ];
 
