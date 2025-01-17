@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewWillEnter } from '@ionic/angular';
+import { AlertController, ViewWillEnter } from '@ionic/angular';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { SessionService } from 'src/app/services/session.service';
 
@@ -25,7 +25,8 @@ export class HomePage implements ViewWillEnter{
   constructor(
     private router: Router,
     private sessionService: SessionService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private alertCtrl: AlertController
   ) {}
 
   ionViewWillEnter(): void {
@@ -37,6 +38,23 @@ export class HomePage implements ViewWillEnter{
     this.lastname = data?.lastname || ''
     this.edLvl = data?.edLvl || ''
     this.birthday = data?.birthday || ''
+  }
+
+  confirmLogout(){
+    this.alertCtrl.create({
+      header: 'Cerrar sesión',
+      message: '¿Estás seguro de cerrar sesión?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel'
+        },
+        {
+          text: 'Si',
+          handler: () => this.logout()
+        }
+      ]
+    }).then(alert => alert.present())
   }
 
   logout(){
