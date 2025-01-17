@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'qr',
     loadChildren: () => import('./pages/qr/qr.module').then( m => m.QrPageModule)
   },
+  {
+    path: 'rick-and-morty',
+    loadChildren: () => import('./pages/rick-and-morty/rick-and-morty.module').then( m => m.RickAndMortyPageModule)
+  },
 ];
 
 @NgModule({

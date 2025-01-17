@@ -26,26 +26,31 @@
       <ion-label><h2>Información Adicional</h2></ion-label>
     </ion-item>
     <ion-item lines="none">
-      <ion-input label="Nombre" mode="md" fill="outline"></ion-input>
+      <ion-input [(ngModel)]="firstname"
+      label="Nombre" mode="md" fill="outline"></ion-input>
     </ion-item>
     <ion-item lines="none">
-      <ion-input label="Apellido" mode="md" fill="outline"></ion-input>
+      <ion-input [(ngModel)]="lastname"
+      label="Apellido" mode="md" fill="outline"></ion-input>
     </ion-item>
     <ion-item lines="none">
-      <ion-select  label="Nivel Ed." mode="md" fill="outline">
+      <ion-select [(ngModel)]="edLvl"
+      label="Nivel Ed." mode="md" fill="outline">
       <ion-select-option value="basica">Ed Basica</ion-select-option>
       <ion-select-option value="media">Ed Media</ion-select-option>
       <ion-select-option value="superior">Ed Superior</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item lines="none">
-      <ion-input label="Fec. Nac." mode="md" fill="outline"></ion-input>
-      <ion-button id="click-trigger" fill="clear">
+      <ion-input [(ngModel)]="birthday" readonly="true"
+      label="Fec. Nac." mode="md" fill="outline"></ion-input>
+      <ion-button id="click-trigger">
         <ion-icon name="calendar"></ion-icon>
       </ion-button>
       <ion-popover trigger="click-trigger" triggerAction="click">
         <ng-template>
-          <ion-datetime></ion-datetime>
+          <ion-datetime [(ngModel)]="birthdayISO" presentation="date"
+          [showDefaultButtons]="true" (ionChange)="formatDate()" ></ion-datetime>
         </ng-template>
       </ion-popover>
     </ion-item>
@@ -53,12 +58,17 @@
       <ion-button>Limpiar
         <ion-icon name="trash-outline" slot="end"></ion-icon>
       </ion-button>
+
+      <ion-button (click)="save()">Guardar
+        <ion-icon name="save-outline" slot="end"></ion-icon>
+      </ion-button>
+
       <ion-button id="present-alert" slot="end">Mostrar
         <ion-icon name="glasses-outline" slot="end"></ion-icon>
       </ion-button>
       <ion-alert trigger="present-alert"
       header="Usuario"
-      message="Su nombre es nombre apellido"
+      message="Su nombre es {{firstname}} {{lastname}}"
     ></ion-alert>
     </ion-item>
   </ion-list>

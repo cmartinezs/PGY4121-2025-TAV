@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Rick And Morty's Characters</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-button (click)="previusPage()">
+        PREV
+        <ion-icon name="arrow-back" slot="start"></ion-icon>
+      </ion-button>
+      <ion-button (click)="nextPage()">
+        NEXT
+        <ion-icon name="arrow-forward" slot="end"></ion-icon></ion-button>
+    </ion-item>
+    <ion-item *ngFor="let character of characters">
+      <ion-avatar slot="start">
+        <img [src]="character.image" />
+      </ion-avatar>
+      {{character.name}}
+      <ion-chip slot="end">
+        <ion-label>{{character.gender}}</ion-label>
+      </ion-chip>
+      <ion-chip slot="end">
+        <ion-label>{{character.status}}</ion-label>
+      </ion-chip>
+    </ion-item>
+  </ion-list>
+</ion-content>
