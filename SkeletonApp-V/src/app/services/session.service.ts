@@ -23,4 +23,8 @@ export class SessionService {
   removeUserSession(){
     this.localStorageService.remove(this.userKey)
   }
+
+  isAuthenticated(){
+    return this.getUserSession() !== 'Invitado'
+  }
 }
