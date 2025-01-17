@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "username": "cmartinez",
+      "password": "1234",
+      "id": "85bc"
+    },
+    {
+      "username": "pepito",
+      "password": "1234",
+      "id": "708e",
+      "carreer": "AAA",
+      "subjects": [
+        "AAA-001",
+        "AAA-002"
+      ]
+    }
+  ],
+  "carreers": [
+    {
+      "code": "AAA",
+      "name": "Ingeniería en Sistemas",
+      "id": "1538"
+    }
+  ],
+  "subjects": [
+    {
+      "code": "AAA-001",
+      "name": "Matemática I",
+      "carreer": "AAA",
+      "id": "0cf4"
+    },
+    {
+      "code": "AAA-002",
+      "name": "Matemática II",
+      "carreer": "AAA",
+      "id": "841f"
+    },
+    {
+      "id": "3609",
+      "code": "AAA-003",
+      "name": "Programación I",
+      "carreer": "AAA"
+    }
+  ]
+}

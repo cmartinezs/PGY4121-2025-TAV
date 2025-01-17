@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { authGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    canActivate: [authGuard]
   },
   {
     path: '',
@@ -22,21 +24,25 @@ const routes: Routes = [
   {
     path: 'example',
     loadChildren: () => import('./pages/example/example.module').then( m => m.ExamplePageModule)
-  },  {
+  },
+  {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
     path: 'qr',
-    loadChildren: () => import('./pages/qr/qr.module').then( m => m.QrPageModule)
+    loadChildren: () => import('./pages/qr/qr.module').then( m => m.QrPageModule),
+    canActivate: [authGuard]
   },
   {
     path: 'geolocation',
-    loadChildren: () => import('./pages/geolocation/geolocation.module').then( m => m.GeolocationPageModule)
+    loadChildren: () => import('./pages/geolocation/geolocation.module').then( m => m.GeolocationPageModule),
+    canActivate: [authGuard]
   },
   {
     path: 'rick-and-morty',
-    loadChildren: () => import('./pages/rick-and-morty/rick-and-morty.module').then( m => m.RickAndMortyPageModule)
+    loadChildren: () => import('./pages/rick-and-morty/rick-and-morty.module').then( m => m.RickAndMortyPageModule),
+    canActivate: [authGuard]
   },
 
 
