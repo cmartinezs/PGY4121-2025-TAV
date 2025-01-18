@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>geolocation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item>
+      <ion-button (click)="getCurrentPosition()">Obtener coordenadas</ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>Latitude: {{latitude}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Longitude: {{longitude}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
