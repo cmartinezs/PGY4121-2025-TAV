@@ -17,5 +17,8 @@ Considerar:
 2. Implementar al menos una API Nativa (Geolocation, Network, Device, etc)
 3. Implementar al menos un consumo de API Rest
 4. Implementar almacenamiento (localSorage)
+5. Implementar navegación segura con Guards
+6. Implementar página 404 cuando no se encuentre una ruta
+7. Uso de servicios para lógica de negocio
 ## Ev3 29 Enero
 ## EX 3 Febrero
