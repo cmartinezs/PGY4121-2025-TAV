@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Geolocation } from '@capacitor/geolocation';
+import { GestureDetail } from '@ionic/angular';
+import { GeoData } from 'src/app/model/geo-data';
+import { GeoDataService } from 'src/app/services/geo-data.service';
 
 @Component({
   selector: 'app-geolocation',
@@ -11,8 +14,11 @@ export class GeolocationPage implements OnInit {
 
   latitude: number = 0
   longitude: number = 0
+  data!: GeoData
 
-  constructor() { }
+  constructor(
+    private geoDataService: GeoDataService
+  ) { }
 
   ngOnInit() {
   }
@@ -24,6 +30,13 @@ export class GeolocationPage implements OnInit {
         this.latitude = positon.coords.latitude
         this.longitude = positon.coords.longitude
       })
+  }
 
+  getDataLocation(){
+    this.geoDataService
+      .getGetData(this.latitude, this.longitude)
+      .subscribe(data => {
+        this.data = data
+      })
   }
 }

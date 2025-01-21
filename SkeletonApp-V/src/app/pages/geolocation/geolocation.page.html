@@ -16,4 +16,18 @@
       <ion-label>Longitude: {{longitude}}</ion-label>
     </ion-item>
   </ion-list>
+  <ion-list>
+    <ion-item>
+      <ion-button (click)="getDataLocation()">Obtener data</ion-button>
+    </ion-item>
+    <ion-item *ngIf="data">
+      <ion-label>Country: {{data.address.country}}</ion-label>
+    </ion-item>
+    <ion-item *ngIf="data">
+      <ion-label>City: {{data.address.city}}</ion-label>
+    </ion-item>
+    <ion-item *ngIf="data">
+      <ion-label>Address: {{data.address.road}} {{data.address.house_number}}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
