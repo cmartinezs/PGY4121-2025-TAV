@@ -1,0 +1,21 @@
+<ion-content class="ion-padding">
+  <div class="scan-container">
+    <h2>Escanea el Código QR</h2>
+    <p>
+      Presiona el botón 'Iniciare Escaneo' y ppunta tu cámara al código QR para obtener las coordenadas. Asegúrate de que el código sea legible.
+    </p>
+    <div *ngIf="qrData">
+      <p>Contenido del QR: {{ qrData }}</p>
+    </div>
+    <div *ngIf="lat && lng">
+      <p>Latitud: {{ lat }}</p>
+      <p>Longitud: {{ lng }}</p>
+    </div>
+    <ion-button expand="block" color="primary" (click)="startScan()">
+      Iniciar Escaneo
+    </ion-button>
+    <ion-button expand="block" color="primary" (click)="getPlace()">
+      Obtener Lugar
+    </ion-button>
+  </div>
+</ion-content>

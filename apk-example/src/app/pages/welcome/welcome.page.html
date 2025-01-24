@@ -1,0 +1,21 @@
+<ion-content class="ion-padding">
+  <div class="welcome-container">
+    <img src="assets/images/welcome.png" alt="Welcome Icon" class="welcome-image" />
+    <h1>¡Bienvenido a GeoQR!</h1>
+    <p>
+      Esta app te permite escanear códigos QR que contienen coordenadas geográficas
+      y calcular la distancia desde tu ubicación actual.
+    </p>
+    <p>
+      <strong>Cómo funciona:</strong>
+    </p>
+    <ol>
+      <li>Escanea el código QR.</li>
+      <li>Verifica las coordenadas del QR.</li>
+      <li>Calcula la distancia desde tu ubicación actual.</li>
+    </ol>
+    <ion-button expand="block" color="primary" (click)="goToScan()">
+      Comenzar
+    </ion-button>
+  </div>
+</ion-content>

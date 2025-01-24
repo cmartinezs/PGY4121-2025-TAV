@@ -1,0 +1,21 @@
+.welcome-container {
+    text-align: justify;
+    margin-top: 10%;
+    display: flex; /* Activar Flexbox */
+    flex-direction: column; /* Alinear en columna */
+    align-items: center; /* Centrar horizontalmente */
+    justify-content: center; /* Centrar verticalmente */
+}
+
+.welcome-image {
+    width: 116px;
+    height: 77.4px;
+    margin: 20px 0; /* Ajustar margen vertical */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+ion-button {
+    margin-top: 20px;
+}
