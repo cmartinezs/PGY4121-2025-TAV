@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CapacitorBarcodeScanner, CapacitorBarcodeScannerTypeHint } from '@capacitor/barcode-scanner';
+import { AlertController } from '@ionic/angular';
 import { Place } from 'src/app/model/geo-data';
 import { GeolocationService } from 'src/app/services/geolocation.service';
 
@@ -19,7 +20,8 @@ export class ScanCoordsPage implements OnInit {
 
   constructor(
     private router: Router,
-    private geoService: GeolocationService
+    private geoService: GeolocationService,
+    private alertCtrl: AlertController
   ) {}
 
   async startScan() {
@@ -30,10 +32,10 @@ export class ScanCoordsPage implements OnInit {
 
       if (result) {
         //-33.5001155,-70.6160476
-        const qrContent = result.ScanResult;
-        console.log('Contenido del código QR:', qrContent);
-        const [lat, lng] = qrContent.split(',');
-        console.log('datos:', qrContent.split(','));
+        this.qrData = result.ScanResult;
+        console.log('Contenido del código QR:', this.qrData);
+        const [lat, lng] = this.qrData.split(',');
+        console.log('datos:', this.qrData.split(','));
         this.lat = parseFloat(lat.trim());
         this.lng = parseFloat(lng.trim());
       } else {
@@ -46,9 +48,19 @@ export class ScanCoordsPage implements OnInit {
   }
 
   getPlace() {
+    if (!this.lat || !this.lng) {
+      this.alertCtrl.create({
+        header: 'Error',
+        message: 'Primero debes escanear un código QR.',
+        buttons: ['OK']
+      }).then(alert => alert.present());
+      return;
+    }
+
     this.geoService.getAddress(this.lat, this.lng)
       .subscribe(place => {
         console.log('Lugar:', place);
+        this.place = place;
       });
   }
 

@@ -11,11 +11,20 @@
       <p>Latitud: {{ lat }}</p>
       <p>Longitud: {{ lng }}</p>
     </div>
+    <div *ngIf="place">
+      <p>Lugar: {{ place.display_name }}</p>
+    </div>
     <ion-button expand="block" color="primary" (click)="startScan()">
       Iniciar Escaneo
     </ion-button>
-    <ion-button expand="block" color="primary" (click)="getPlace()">
+    <ion-button *ngIf="lat && lng" expand="block" color="primary" (click)="getPlace()">
       Obtener Lugar
+    </ion-button>
+    <ion-button [disabled]="!lat || !lng" expand="block" color="primary" (click)="getPlace()">
+      Obtener Lugar
+    </ion-button>
+    <ion-button expand="block" color="primary" (click)="getPlace()">
+      Obtener Lugar (validación función)
     </ion-button>
   </div>
 </ion-content>
