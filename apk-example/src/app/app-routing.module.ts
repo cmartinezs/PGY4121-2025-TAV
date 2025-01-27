@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/scan-coords/scan-coords.module').then( m => m.ScanCoordsPageModule)
   },
   {
-    path: 'distance',
+    path: 'distance/:lat/:lng',
     loadChildren: () => import('./pages/coords-distance/coords-distance.module').then( m => m.CoordsDistancePageModule)
   },
   {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CapacitorBarcodeScanner, CapacitorBarcodeScannerTypeHint } from '@capacitor/barcode-scanner';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { Place } from 'src/app/model/geo-data';
 import { GeolocationService } from 'src/app/services/geolocation.service';
 
@@ -21,7 +21,8 @@ export class ScanCoordsPage implements OnInit {
   constructor(
     private router: Router,
     private geoService: GeolocationService,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController,
   ) {}
 
   async startScan() {
@@ -35,9 +36,10 @@ export class ScanCoordsPage implements OnInit {
         this.qrData = result.ScanResult;
         console.log('Contenido del código QR:', this.qrData);
         const [lat, lng] = this.qrData.split(',');
+        //const data = this.qrData.split(',')
         console.log('datos:', this.qrData.split(','));
-        this.lat = parseFloat(lat.trim());
-        this.lng = parseFloat(lng.trim());
+        this.lat = parseFloat(lat.trim()); // data[0]
+        this.lng = parseFloat(lng.trim()); // data[1]
       } else {
         alert('No se detectó contenido en el código QR.');
       }
@@ -47,21 +49,57 @@ export class ScanCoordsPage implements OnInit {
     }
   }
 
-  getPlace() {
+  validateCoords(){
     if (!this.lat || !this.lng) {
       this.alertCtrl.create({
         header: 'Error',
         message: 'Primero debes escanear un código QR.',
         buttons: ['OK']
       }).then(alert => alert.present());
-      return;
+      return false;
+    }
+    return true
+  }
+
+  async getPlace() {
+    if(!this.validateCoords()){
+      return
     }
 
+    const loader = await this.loadingCtrl.create({
+      message: 'Obteniendo información de la ubicación'
+    })
+    loader.present()
+
     this.geoService.getAddress(this.lat, this.lng)
-      .subscribe(place => {
+      /*.subscribe(place => {
         console.log('Lugar:', place);
         this.place = place;
-      });
+        loader.dismiss()
+      });*/
+      .subscribe({
+        next: place => {
+          console.log('Lugar:', place);
+          this.place = place;
+          loader.dismiss()
+        },
+        error: err => {
+          console.log('err:', err);
+          loader.dismiss()
+          this.alertCtrl.create({
+            header: 'Error',
+            message: 'No se pudo obtener la información de la ubicación',
+            buttons: ['OK']
+          }).then(alert => alert.present());
+        },
+      })
+  }
+
+  goToCalculateDistance(){
+    if(!this.validateCoords()){
+      return
+    }
+    this.router.navigateByUrl(`/distance/${this.lat}/${this.lng}`)
   }
 
   ngOnInit() {

@@ -1,13 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>coords-distance</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">coords-distance</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <div class="scan-container">
+    <div *ngIf="lat && lng">
+      <p>Latitud QR: {{ lat }}</p>
+      <p>Longitud QR: {{ lng }}</p>
+    </div>
+    <div *ngIf="place">
+      <p>Lugar: {{ place.display_name }}</p>
+    </div>
+    <div *ngIf="lat2 && lng2">
+      <p>Latitud Dispositivo: {{ lat2 }}</p>
+      <p>Longitud Dispositivo: {{ lng2 }}</p>
+    </div>
+    <div *ngIf="distance">
+      <p>Distancia: {{distance.toFixed(2) }} km</p>
+    </div>
+  </div>
 </ion-content>
