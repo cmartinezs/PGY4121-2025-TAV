@@ -36,6 +36,8 @@ export class ScanCoordsPage implements OnInit {
         this.qrData = result.ScanResult;
         console.log('Contenido del código QR:', this.qrData);
         const [lat, lng] = this.qrData.split(',');
+        console.log(`lat: |${lat}|`);
+        console.log(`lat: |${lat.trim()}|`);
         //const data = this.qrData.split(',')
         console.log('datos:', this.qrData.split(','));
         this.lat = parseFloat(lat.trim()); // data[0]

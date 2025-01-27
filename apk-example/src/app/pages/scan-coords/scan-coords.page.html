@@ -18,15 +18,15 @@
       Iniciar Escaneo
     </ion-button>
     <ion-button *ngIf="lat && lng" expand="block" color="primary" (click)="getPlace()">
-      Obtener Lugar
+      Obtener Lugar (ngIf)
     </ion-button>
     <ion-button [disabled]="!lat || !lng" expand="block" color="primary" (click)="getPlace()">
-      Obtener Lugar
+      Obtener Lugar (Disabled)
     </ion-button>
     <ion-button expand="block" color="primary" (click)="getPlace()">
       Obtener Lugar (validación función)
     </ion-button>
-    <ion-button expand="block" color="primary" (click)="goToCalculateDistance()">
+    <ion-button [disabled]="!lat || !lng" expand="block" color="primary" (click)="goToCalculateDistance()">
       Ir a calcular distancia
     </ion-button>
   </div>
